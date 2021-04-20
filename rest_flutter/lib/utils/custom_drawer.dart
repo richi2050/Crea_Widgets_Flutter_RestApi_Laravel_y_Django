@@ -12,5 +12,36 @@ class _DrawerItem{
 class CustomDrawer {
   static final _optionsItems = [
     _DrawerItem(title: 'Chip', icon: Icons.list, route: ChipPage.ROUTE)
-  ]
+  ];
+
+  static Widget getDrawer(BuildContext context){
+
+    List<Widget> items = _optionsItems.map((item)  => _createItem(context,item)).toList();
+
+    return Drawer(
+      child: Column(
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Colors.blueGrey),
+              accountEmail: Text("Sin email"),
+              accountName: Text("Sin nombre"),
+          ),
+          Column(
+            children: items
+          )
+        ],
+      ),
+    );
+  }
+
+  static Widget _createItem(BuildContext context,_DrawerItem item){
+    return ListTile(
+      leading: Icon(item.icon),
+      title: Text(item.title),
+      onTap: (){
+        Navigator.pop(context);
+        Navigator.pushNamed(context, item.route);
+      },
+    );
+  }
 }
