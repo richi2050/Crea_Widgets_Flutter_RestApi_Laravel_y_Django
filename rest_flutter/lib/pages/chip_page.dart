@@ -11,15 +11,22 @@ class ChipPage extends StatelessWidget {
           title: Text('Chip Pages'),
         ),
         drawer: CustomDrawer.getDrawer(context),
-        body: buildWidget(getData()));
+        body: Column(
+          children: buildWidgets(getData()),
+        ));
   }
 
   /*
    * Obtiene la data y compone el modelo
    */
-  ChipModel getData() {
-    return ChipModel.constructor(
-        "FFFFFFFF", "FFFF0000", "Ricardo Lugo", "access_alarm");
+  List<ChipModel> getData() {
+    List<ChipModel> chipModels = List();
+
+    for (int i = 0; i < 10; i++)
+      chipModels.add(ChipModel.constructor(
+          "FFFFFFFF", "FFFF0000", "Ricardo Lugo $i", "access_alarm"));
+
+    return chipModels;
   }
 
   Widget buildWidget(ChipModel chipModel) {
@@ -30,5 +37,13 @@ class ChipPage extends StatelessWidget {
           child: Icon(Icons.access_alarm),
         ),
         label: Text(chipModel.label));
+  }
+
+  List<Widget> buildWidgets(List<ChipModel> chipModels) {
+    List<Widget> chipWidgets = List();
+    chipModels.forEach((chipModel) {
+      chipWidgets.add(buildWidget(chipModel));
+    });
+    return chipWidgets;
   }
 }
