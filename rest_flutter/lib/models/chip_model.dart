@@ -1,15 +1,14 @@
 class ChipModel {
   String colorIcon;
   String colorBg;
-  String color;
-  String type;
+  String label;
   String icon;
 
   ChipModel.constructor(
-      String colorIcon, String colorBg, String color, String type) {
+      String colorIcon, String colorBg, String label, String icon) {
     this.colorIcon = colorIcon;
     this.colorBg = colorBg;
-    this.color = color;
-    this.type = type;
+    this.label = label;
+    this.icon = icon;
   }
 }

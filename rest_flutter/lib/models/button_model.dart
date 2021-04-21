@@ -1,14 +1,14 @@
 class ButtonModel {
   String text;
   String colorBg;
-  String label;
-  String icon;
+  String color;
+  String type;
 
   ButtonModel.constructor(
-      String text, String colorBg, String label, String icon) {
+      String text, String colorBg, String color, String type) {
     this.text = text;
     this.colorBg = colorBg;
-    this.label = label;
-    this.icon = icon;
+    this.color = color;
+    this.type = type;
   }
 }
