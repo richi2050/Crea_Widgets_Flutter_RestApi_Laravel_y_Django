@@ -6,6 +6,6 @@ class TextModel {
 
   TextModel.constructor(String text) {
     this.text = text;
-    //this.fun = TextWidget.build;
+    this.fun = TextWidget.build;
   }
 }

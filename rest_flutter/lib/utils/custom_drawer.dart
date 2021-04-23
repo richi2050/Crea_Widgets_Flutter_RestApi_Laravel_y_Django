@@ -3,6 +3,7 @@ import 'package:rest_flutter/pages/buttons_page.dart';
 import 'package:rest_flutter/pages/chips_page.dart';
 import 'package:flutter/material.dart';
 import 'package:rest_flutter/pages/images_page.dart';
+import 'package:rest_flutter/pages/mix_page.dart';
 import 'package:rest_flutter/pages/texts_page.dart';
 
 class _DrawerItem {
@@ -18,6 +19,7 @@ class CustomDrawer {
     _DrawerItem(title: 'button', icon: Icons.list, route: ButtonsPage.ROUTE),
     _DrawerItem(title: "Texto", icon: Icons.list, route: TextsPage.ROUTE),
     _DrawerItem(title: "Image", icon: Icons.image, route: ImagesPage.ROUTE),
+    _DrawerItem(title: "Mix", icon: Icons.image, route: MixPage.ROUTE),
   ];
 
   static Widget getDrawer(BuildContext context) {
