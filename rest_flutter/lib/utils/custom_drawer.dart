@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:rest_flutter/pages/buttons_page.dart';
 import 'package:rest_flutter/pages/chips_page.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,8 @@ class _DrawerItem {
 
 class CustomDrawer {
   static final _optionsItems = [
-    _DrawerItem(title: 'Chip', icon: Icons.list, route: ChipsPage.ROUTE)
+    _DrawerItem(title: 'Chip', icon: Icons.list, route: ChipsPage.ROUTE),
+    _DrawerItem(title: 'button', icon: Icons.list, route: ButtonsPage.ROUTE)
   ];
 
   static Widget getDrawer(BuildContext context) {
