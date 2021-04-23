@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:rest_flutter/components/page_component.dart';
 import 'package:rest_flutter/models/chip_model.dart';
 import 'package:rest_flutter/utils/custom_drawer.dart';
 import 'package:rest_flutter/widgets/chip_widget.dart';
 
-class ChipsPage extends StatelessWidget {
+class ChipsPage extends StatelessWidget with PageComponent {
   static const String ROUTE = '/chips';
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class ChipsPage extends StatelessWidget {
         ),
         drawer: CustomDrawer.getDrawer(context),
         body: Column(
-          children: buildWidgets(getData()),
+          children: buildWidgets(getData(), ChipWidget.build),
         ));
   }
 
@@ -28,13 +29,5 @@ class ChipsPage extends StatelessWidget {
           "FFFFFFFF", "FFFF0000", "Ricardo Lugo $i", "access_alarm"));
 
     return chipModels;
-  }
-
-  List<Widget> buildWidgets(List<ChipModel> chipModels) {
-    List<Widget> chipWidgets = List();
-    chipModels.forEach((chipModel) {
-      chipWidgets.add(ChipWidget(chipModel));
-    });
-    return chipWidgets;
   }
 }

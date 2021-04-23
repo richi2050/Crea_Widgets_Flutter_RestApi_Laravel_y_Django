@@ -3,16 +3,15 @@ import 'package:rest_flutter/models/chip_model.dart';
 
 /* Esta clase solo se va a encargar de construir uyn chip por vez */
 
-class ChipWidget extends StatelessWidget {
-  final ChipModel chipModel;
-  const ChipWidget(this.chipModel);
+class ChipWidget {
+  //final ChipModel chipModel;
+  //const ChipWidget(this.chipModel);
 
-  @override
-  Widget build(BuildContext context) {
-    return buildWidget();
+  static Widget build(ChipModel chipModel) {
+    return buildWidget(chipModel);
   }
 
-  Widget buildWidget() {
+  static Widget buildWidget(ChipModel chipModel) {
     return Chip(
         backgroundColor: Color(int.parse(chipModel.colorBg, radix: 16)),
         avatar: CircleAvatar(

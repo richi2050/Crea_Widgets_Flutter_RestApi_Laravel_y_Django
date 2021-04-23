@@ -3,16 +3,15 @@ import 'package:rest_flutter/models/button_model.dart';
 
 /* Esta clase solo se va a encargar de construir uyn chip por vez */
 
-class ButtonWidget extends StatelessWidget {
-  final ButtonModel buttonModel;
-  const ButtonWidget(this.buttonModel);
+class ButtonWidget {
+  //static final ButtonModel buttonModel;
+  //const ButtonWidget(this.buttonModel);
 
-  @override
-  Widget build(BuildContext context) {
-    return buildWidget();
+  static Widget build(ButtonModel buttonModel) {
+    return buildWidget(buttonModel);
   }
 
-  Widget buildWidget() {
+  static Widget buildWidget(ButtonModel buttonModel) {
     switch (buttonModel.type) {
       case "flat":
         return FlatButton(
