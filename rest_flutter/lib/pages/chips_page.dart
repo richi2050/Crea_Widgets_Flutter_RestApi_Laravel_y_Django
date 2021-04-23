@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rest_flutter/models/chip_model.dart';
 import 'package:rest_flutter/utils/custom_drawer.dart';
+import 'package:rest_flutter/widgets/chip_widget.dart';
 
-class ChipPage extends StatelessWidget {
+class ChipsPage extends StatelessWidget {
   static const String ROUTE = '/chips';
   @override
   Widget build(BuildContext context) {
@@ -29,20 +30,10 @@ class ChipPage extends StatelessWidget {
     return chipModels;
   }
 
-  Widget buildWidget(ChipModel chipModel) {
-    return Chip(
-        backgroundColor: Color(int.parse(chipModel.colorBg, radix: 16)),
-        avatar: CircleAvatar(
-          backgroundColor: Color(int.parse(chipModel.colorIcon, radix: 16)),
-          child: Icon(Icons.access_alarm),
-        ),
-        label: Text(chipModel.label));
-  }
-
   List<Widget> buildWidgets(List<ChipModel> chipModels) {
     List<Widget> chipWidgets = List();
     chipModels.forEach((chipModel) {
-      chipWidgets.add(buildWidget(chipModel));
+      chipWidgets.add(ChipWidget(chipModel));
     });
     return chipWidgets;
   }
