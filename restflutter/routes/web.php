@@ -24,3 +24,7 @@ Route::get('/', function () {
 Route::resource('chip', ChipController::class);
 Route::resource('button', ButtonController::class);
 Route::resource('text', TextController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
