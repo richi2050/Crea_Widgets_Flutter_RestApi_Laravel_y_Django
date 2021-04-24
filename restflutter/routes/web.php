@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ButtonController;
+use App\Http\Controllers\ChipController;
+use App\Http\Controllers\TextController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('chip', ChipController::class);
+Route::resource('button', ButtonController::class);
+Route::resource('text', TextController::class);
