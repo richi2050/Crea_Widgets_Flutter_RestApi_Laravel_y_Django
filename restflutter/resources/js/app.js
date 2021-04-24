@@ -1,1 +1,1 @@
-require('./bootstrap');
+const boostrap = require('./bootstrap');
