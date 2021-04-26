@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Button extends Model
 {
     use HasFactory;
+    protected $fillable = ['color','color_bg','label','icon','type','group_id'];
 }

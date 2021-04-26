@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ButtonController;
 use App\Http\Controllers\ChipController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\TextController;
+use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,9 +23,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware'=> 'auth'], 
+function () {
+
 Route::resource('chip', ChipController::class);
 Route::resource('button', ButtonController::class);
 Route::resource('text', TextController::class);
+Route::resource('image', ImageController::class);
+});
 
 Auth::routes();
 

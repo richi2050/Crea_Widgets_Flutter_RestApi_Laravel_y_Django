@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveChip;
 use App\Models\Chip;
+use App\Models\Group;
 use Illuminate\Http\Request;
 
 class ChipController extends Controller
@@ -14,7 +16,8 @@ class ChipController extends Controller
      */
     public function index()
     {
-        //
+        $chips = Chip::paginate(15);
+        return view('dashboard.widgets.chip.index',compact('chips'));
     }
 
     /**
@@ -24,7 +27,9 @@ class ChipController extends Controller
      */
     public function create()
     {
-        //
+        $groups = Group::pluck('id','name');
+        $chip = new Chip();
+        return view('dashboard.widgets.chip.create',compact('groups','chip'));
     }
 
     /**
@@ -33,9 +38,10 @@ class ChipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveChip $request)
     {
-        //
+        Chip::create($request->validated());
+        return back()->with('status','Elemento creado con xito');
     }
 
     /**
@@ -57,7 +63,8 @@ class ChipController extends Controller
      */
     public function edit(Chip $chip)
     {
-        //
+        $groups = Group::pluck('id','name');
+        return view('dashboard.widgets.chip.edit',compact('groups','chip'));
     }
 
     /**
@@ -67,9 +74,10 @@ class ChipController extends Controller
      * @param  \App\Models\Chip  $chip
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chip $chip)
+    public function update(SaveChip $request, Chip $chip)
     {
-        //
+        $chip->update($request->validated());
+        return back()->with('status','Actualizado con éxito');
     }
 
     /**
@@ -80,6 +88,7 @@ class ChipController extends Controller
      */
     public function destroy(Chip $chip)
     {
-        //
+        $chip->delete();
+        return back()->with('status','Eliminado con éxito');
     }
 }

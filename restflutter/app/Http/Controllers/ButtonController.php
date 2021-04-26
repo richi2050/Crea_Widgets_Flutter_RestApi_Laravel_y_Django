@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Button;
+use App\Http\Requests\SaveButton;
 use Illuminate\Http\Request;
 
+use App\Models\Group;
+use App\Models\Button;
 class ButtonController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class ButtonController extends Controller
      */
     public function index()
     {
-        //
+        $buttons = Button::paginate(15);
+        return view('dashboard.widgets.button.index',compact('buttons'));
     }
 
     /**
@@ -24,7 +27,11 @@ class ButtonController extends Controller
      */
     public function create()
     {
-        //
+        $groups = Group::pluck('id', 'name');
+   
+        $button = new Button();
+        
+        return view('dashboard.widgets.button.create',compact('groups','button'));
     }
 
     /**
@@ -33,9 +40,10 @@ class ButtonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveButton $request)
     {
-        //
+        Button::create($request->validated());
+        return back()->with('status','Elemento creado con éxito');
     }
 
     /**
@@ -57,7 +65,8 @@ class ButtonController extends Controller
      */
     public function edit(Button $button)
     {
-        //
+        $groups = Group::pluck('id','name');
+        return view('dashboard.widgets.button.edit',compact('groups','button'));
     }
 
     /**
@@ -67,9 +76,10 @@ class ButtonController extends Controller
      * @param  \App\Models\Button  $button
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Button $button)
+    public function update(SaveButton $request, Button $button)
     {
-        //
+        $button->update($request->validated());
+        return back()->with('status','Elemento se ha actualizado');
     }
 
     /**
@@ -80,6 +90,7 @@ class ButtonController extends Controller
      */
     public function destroy(Button $button)
     {
-        //
+        $button->delete();
+        return back()->with('status','Eliminado con éxito');
     }
 }

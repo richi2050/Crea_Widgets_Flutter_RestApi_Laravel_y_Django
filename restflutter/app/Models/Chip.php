@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Chip extends Model
 {
     use HasFactory;
+    protected $fillable = ['color','color_bg','label','icon','group_id'];
 }

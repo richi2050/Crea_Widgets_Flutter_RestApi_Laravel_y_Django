@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Text extends Model
+class Group extends Model
 {
     use HasFactory;
-    protected $fillable = ['text','group_id'];
 }
